@@ -26,7 +26,6 @@ python3 -m pip install -e .
 
 - `openai-image`
 - `oi`
-- `nanobanana2`  (호환용)
 
 설치 없이도 프로젝트 루트에서 아래 파일을 직접 실행할 수 있습니다.
 

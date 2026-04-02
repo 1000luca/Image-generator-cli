@@ -13,9 +13,8 @@ dependencies = [
 ]
 
 [project.scripts]
-oi = "nanobanana2_cli.cli:main"
-openai-image = "nanobanana2_cli.cli:main"
-nanobanana2 = "nanobanana2_cli.cli:main"
+oi = "openai_image_cli.cli:main"
+openai-image = "openai_image_cli.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
