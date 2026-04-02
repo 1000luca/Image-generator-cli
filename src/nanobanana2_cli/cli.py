@@ -242,10 +242,16 @@ def choose_profile(name: str) -> Profile:
     return PROFILES[name]
 
 
-def resolve_size(shape: str, explicit_size: str | None) -> str | None:
+def resolve_size(
+    shape: str,
+    explicit_size: str | None,
+    profile_size: str | None,
+) -> str | None:
     if explicit_size:
         return explicit_size
-    return SHAPE_TO_SIZE.get(shape, "auto")
+    if shape != "auto":
+        return SHAPE_TO_SIZE[shape]
+    return profile_size
 
 
 def build_request_kwargs(args: argparse.Namespace, prompt: str) -> dict[str, object]:
@@ -281,7 +287,7 @@ def apply_profile_defaults(args: argparse.Namespace) -> argparse.Namespace:
         args.style = profile.style
     if args.background is None:
         args.background = profile.background
-    args.size = resolve_size(args.shape, args.size or profile.size)
+    args.size = resolve_size(args.shape, args.size, profile.size)
 
     if args.transparent:
         args.background = "transparent"
